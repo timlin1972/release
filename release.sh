@@ -6,6 +6,7 @@ PLUGINS_PATH=plugins
 PLUGINS=(
     "center center ./."
     "tln_sysinfo libtln_sysinfo.so ./${PLUGINS_PATH}/."
+    "tln_mqtt libtln_mqtt.so ./${PLUGINS_PATH}/."
 )
 
 # clean
