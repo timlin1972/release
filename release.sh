@@ -7,6 +7,7 @@ PLUGINS=(
     "center center ./."
     "tln_sysinfo libtln_sysinfo.so ./${PLUGINS_PATH}/."
     "tln_mqtt libtln_mqtt.so ./${PLUGINS_PATH}/."
+    "tln_devinfo libtln_devinfo.so ./${PLUGINS_PATH}/."
 )
 
 # clean
