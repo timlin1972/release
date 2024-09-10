@@ -5,9 +5,11 @@ PLUGINS_PATH=plugins
 
 PLUGINS=(
     "center center ./."
-    "tln_sysinfo libtln_sysinfo.so ./${PLUGINS_PATH}/."
-    "tln_mqtt libtln_mqtt.so ./${PLUGINS_PATH}/."
-    "tln_devinfo libtln_devinfo.so ./${PLUGINS_PATH}/."
+    "tln_sysinfo libtln_sysinfo ./${PLUGINS_PATH}/."
+    "tln_mqtt libtln_mqtt ./${PLUGINS_PATH}/."
+    "tln_devinfo libtln_devinfo ./${PLUGINS_PATH}/."
+    "tln_log libtln_log ./${PLUGINS_PATH}/."
+    "tln_cfg libtln_cfg ./${PLUGINS_PATH}/."
 )
 
 # clean
@@ -24,14 +26,17 @@ for PLUGIN_INFO in "${PLUGINS[@]}"; do
     OUTPUT=${PLUGIN[1]}
     DST_PATH=${PLUGIN[2]}
 
-
     echo "Processing ${SRC_PATH}..."
-    cd ${SRC_PATH}
-    cargo fmt
-    cargo clippy
-    cargo build --release
-    cp target/release/${OUTPUT} ${DST}/${DST_PATH}
-    cd ..
+    if [ -d "$SRC_PATH" ]; then
+        cd ${SRC_PATH}
+        cargo fmt
+        cargo clippy
+        cargo build --release
+        cp target/release/${OUTPUT} ${DST}/${DST_PATH}
+        cp target/release/${OUTPUT}.so ${DST}/${DST_PATH}
+        cp target/release/${OUTPUT}.dylib ${DST}/${DST_PATH}
+        cd ..
+    fi
 done
 
 cd release

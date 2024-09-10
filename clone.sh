@@ -1,9 +1,8 @@
 #!/bin/bash
 
-cd ..
+source ./packages.sh
 
-git clone git@github.com:timlin1972/center.git
-git clone git@github.com:timlin1972/common.git
-git clone git@github.com:timlin1972/tln_sysinfo.git
-git clone git@github.com:timlin1972/tln_mqtt.git
-git clone git@github.com:timlin1972/tln_devinfo.git
+cd ..
+for package in "${packages[@]}"; do
+    git clone git@github.com:timlin1972/${package}.git
+done

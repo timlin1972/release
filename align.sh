@@ -1,26 +1,10 @@
 #!/bin/bash
 
-cd ..
-cd center
-git fetch
-git pull --rebase
+source ./packages.sh
 
-cd ..
-cd common
-git fetch
-git pull --rebase
-
-cd ..
-cd tln_devinfo
-git fetch
-git pull --rebase
-
-cd ..
-cd tln_mqtt
-git fetch
-git pull --rebase
-
-cd ..
-cd tln_sysinfo
-git fetch
-git pull --rebase
+for package in "${packages[@]}"; do
+    cd ..
+    cd "$package"
+    git fetch
+    git pull --rebase
+done

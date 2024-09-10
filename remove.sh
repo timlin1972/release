@@ -1,6 +1,8 @@
 #!/bin/bash
 
+source ./packages.sh
+
 cd ..
-rm -rf center
-rm -rf common
-rm -rf tln*
+for package in "${packages[@]}"; do
+    rm -rf ${package}
+done
