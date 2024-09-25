@@ -10,6 +10,7 @@ PLUGINS=(
     "tln_devinfo libtln_devinfo ./${PLUGINS_PATH}/."
     "tln_log libtln_log ./${PLUGINS_PATH}/."
     "tln_cfg libtln_cfg ./${PLUGINS_PATH}/."
+    "tln_command libtln_command ./${PLUGINS_PATH}/."
 )
 
 # clean
